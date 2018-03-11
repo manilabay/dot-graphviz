@@ -1,0 +1,32 @@
+
+digraph architecture {
+  rankdir=LR;
+
+  subgraph client_side_apps {
+      front_ends_desk_and_mobile -> {auth_api};
+      customer -> {auth_api};
+      retail -> {auth_api};
+      auth_api -> {main_4yourears_api};
+      medium_supplier -> {front_end, front_ends_desk_and_mobile};
+      large_supplier -> {auth_api};
+
+      {rank=same; front_end, front_ends_desk_and_mobile, auth_api};
+  }
+
+  subgraph api_gateways {
+      main_4yourears_api -> {antique_LP_ms, audiobooks_ms, audiostream_ms, n_new_product_ms, orders_ms};
+  }
+
+  subgraph microservices {
+      database -> {orders_ms};
+      antique_LP_ms -> {database};
+      audiobooks_ms -> {database};
+      n_new_product_ms -> {database};
+      audiostream_ms -> {stream_partner_api};
+      orders_ms -> {CDN_order};
+      stream_partner_api -> {CDN_stream};
+      customer -> {CDN_stream};
+      large_supplier -> {CDN_order};
+
+  }
+}
