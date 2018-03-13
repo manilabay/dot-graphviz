@@ -7,22 +7,28 @@ digraph G {
     # s3  [image="../../aws-icons/AWS_Simple_Icons_svg_eps/Storage & Content Delivery/SVG/Storage & Content Delivery_Amazon S3.png"];
     # gl  [shape=none, image="../../aws-icons/AWS_Simple_Icons_svg_eps/Storage & Content Delivery/SVG/Storage & Content Delivery_Amazon Glacier.png"];
 
-    all_http_traffic_requests -> auth_api [color="blue"];
+    all_http_traffic_requests -> auth_api [color="green"];
 
-    auth_api -> lambda_functions [color="blue"];
+    auth_api -> aws_lambda_functions [color="green"];
 
-    lambda_functions -> aws_gateway_api [color="blue"];
+    aws_lambda_functions -> aws_gateway_api [color="green"];
 
-    aws_gateway_api -> audiostream_ms_app [color="blue"];
-    aws_gateway_api -> audiobooks_ms_app [color="blue"];
-    aws_gateway_api -> antiqueLP_ms_app [color="blue"];
-    aws_gateway_api -> orders_ms_app [color="blue"];
-    stream_partner_api -> audiostream_ms_app [color="blue"];
+    aws_gateway_api -> aws_aelb [color="green"];
 
-    aws_codepipeline -> aws_gateway_api,lambda_functions [color="red"];
+    audiostream_ms_app  ->  stream_partner_api [color="green"];
+
+    aws_aelb -> aws_ecs [color="blue"];
+
+    aws_ecs -> audiostream_ms_app [color="green"];
+    aws_ecs -> audiobooks_ms_app [color="green"];
+    aws_ecs -> antiqueLP_ms_app [color="green"];
+    aws_ecs -> orders_ms_app [color="green"];
+
+
+    aws_codepipeline -> aws_gateway_api,aws_lambda_functions,aws_ecs [color="red"];
     aws_codebuild -> aws_codepipeline [color="red"];
     git_repos -> aws_codebuild [color="red"];
-    CI_jenkins_or_bamboo -> aws_gateway_api,lambda_functions [color="red"];
+    CI_jenkins_or_bamboo -> aws_gateway_api,aws_lambda_functions,aws_ecs [color="red"];
     git_repos -> CI_jenkins_or_bamboo [color="red"];
 
 
@@ -31,19 +37,19 @@ digraph G {
     antiqueLP_ms_app -> {aws_rds_mysql} [color="red"];
     orders_ms_app -> {aws_rds_mysql} [color="red"];
 
-    aws_rds_mysql -> {aws_glue_ETL} [color="green"];
-    aws_glue_ETL -> {aws_quicksight_BI} [color="green"];
+    aws_rds_mysql -> {aws_glue_ETL} [color="blue"];
+    aws_glue_ETL -> {aws_quicksight_BI} [color="blue"];
 
-    aws_glue_ETL -> s3 [color="green"];
-    aws_glue_ETL -> s3 [color="green"];
+    aws_glue_ETL -> s3 [color="blue"];
 
-    s3 -> aws_cloudfront_orders [color="green"];
-    s3 -> aws_cloudfront_stream [color="green"];
-    s3 -> aws_glacier [color="green"];
 
-    s3 -> aws_kinesis_data_analytics [color="green"];
+    s3 -> aws_cloudfront_orders [color="blue"];
+    s3 -> aws_cloudfront_stream [color="blue"];
+    s3 -> aws_glacier [color="blue"];
 
-    all_stream_or_batch_traffic_requests -> aws_cloudfront_orders,aws_cloudfront_stream [color="blue"];
+    s3 -> aws_kinesis_data_analytics [color="blue"];
+
+    all_stream_or_batch_traffic_requests -> aws_cloudfront_orders,aws_cloudfront_stream [color="green"];
 
 
 }

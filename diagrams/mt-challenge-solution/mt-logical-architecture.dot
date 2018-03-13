@@ -3,39 +3,44 @@ digraph architecture {
   rankdir=LR;
 
   subgraph client_side_apps {
-      front_ends_desk_and_mobile -> {_4yourears_auth_api};
-      customer -> {_4yourears_auth_api};
-      retail -> {_4yourears_auth_api};
-      _4yourears_auth_api -> {main_4yourears_api};
-      medium_supplier -> {front_end, front_ends_desk_and_mobile};
-      large_supplier -> {_4yourears_auth_api};
-      partner_backend -> {stream_partner_api};
-      third_party_website_or_franchisee -> {_4yourears_auth_api};
+      front_ends_desk_and_mobile -> {_4yourears_auth_api} [color="green"];
+      customer -> {_4yourears_auth_api} [color="green"];
+      retail -> {_4yourears_auth_api} [color="green"];
+      _4yourears_auth_api -> {main_4yourears_api} [color="green"];
+      medium_supplier -> {front_end, front_ends_desk_and_mobile} [color="green"];
+      large_supplier -> {_4yourears_auth_api} [color="green"];
+      partner_backend -> {stream_partner_api} [color="green"];
+      third_party_website_or_franchisee -> {_4yourears_auth_api} [color="green"];
 
-      {rank=same; front_end, front_ends_desk_and_mobile, _4yourears_auth_api};
+      {rank=same; front_end, front_ends_desk_and_mobile, _4yourears_auth_api} [color="green"];
   }
-  
+
   subgraph api_gateways {
-      main_4yourears_api -> {antique_LP_ms, audiobooks_ms, audiostream_ms, n_new_product_ms, orders_ms};
+      main_4yourears_api -> {antique_LP_ms, audiobooks_ms, audiostream_ms, n_new_product_ms, orders_ms} [color="green"];
   }
 
   subgraph microservices {
-      orders_ms -> {database};
-      antique_LP_ms -> {database};
-      audiobooks_ms -> {database};
-      n_new_product_ms -> {database};
-      audiostream_ms -> {database};
-      audiostream_ms -> {stream_partner_api};
-      orders_ms -> {dump_extension};
-      dump_extension -> {CDN_orders};
-      dump_extension -> {CDN_stream};
-      stream_partner_api -> {dump_extension};
-      database -> {ETL};
-      ETL -> behaviour_analytics;
+      orders_ms -> {database} [color="green"];
+      antique_LP_ms -> {database} [color="green"];
+      audiobooks_ms -> {database} [color="green"];
+      n_new_product_ms -> {database} [color="green"];
+      audiostream_ms -> {database} [color="green"];
+      audiostream_ms -> {stream_partner_api} [color="blue"];
 
-      customer -> {CDN_stream};
-      medium_supplier -> {CDN_orders};
-      large_supplier -> {CDN_orders};
+      dump_extension -> {CDN_orders} [color="blue"];
+      dump_extension -> {CDN_stream} [color="blue"];
+
+      database -> {ETL} [color="blue"];
+      ETL -> behaviour_analytics [color="blue"];
+      stream_partner_api -> {ETL} [color="blue"];
+      ETL -> dump_extension [color="blue"];
+
+      customer -> {CDN_stream} [color="blue"];
+      medium_supplier -> {CDN_orders} [color="green"];
+      large_supplier -> {CDN_orders} [color="green"];
+
+      CDN_orders -> {longterm_Storage} [color="green"];
+      CDN_stream -> {longterm_Storage} [color="green"];
 
   }
 }
