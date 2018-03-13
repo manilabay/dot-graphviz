@@ -20,11 +20,11 @@ digraph architecture {
   }
 
   subgraph microservices {
-      orders_ms -> {database} [color="green"];
-      antique_LP_ms -> {database} [color="green"];
-      audiobooks_ms -> {database} [color="green"];
-      n_new_product_ms -> {database} [color="green"];
-      audiostream_ms -> {database} [color="green"];
+      orders_ms -> {database} [color="red"];
+      antique_LP_ms -> {database} [color="red"];
+      audiobooks_ms -> {database} [color="red"];
+      n_new_product_ms -> {database} [color="red"];
+      audiostream_ms -> {database} [color="red"];
       audiostream_ms -> {stream_partner_api} [color="blue"];
 
       dump_extension -> {CDN_orders} [color="blue"];
@@ -35,7 +35,7 @@ digraph architecture {
       stream_partner_api -> {ETL} [color="blue"];
       ETL -> dump_extension [color="blue"];
 
-      customer -> {CDN_stream} [color="blue"];
+      customer -> {CDN_stream} [color="green"];
       medium_supplier -> {CDN_orders} [color="green"];
       large_supplier -> {CDN_orders} [color="green"];
 
