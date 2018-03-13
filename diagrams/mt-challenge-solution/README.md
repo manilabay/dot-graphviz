@@ -40,7 +40,7 @@ Basically and to understand very clear the diagram:
 * Blue arrows represent internal processing traffic
 * Red arrows represent update/release traffic
 
-All the items starting with aws_<any> are AWS resources
+All the items starting with aws_any are AWS resources
 
 At the Application Elastic load balancers(aws_aelb) and ECS tier it could be multiplexed in to multiple albs and ecs nodes depends of the deep details and requirements for the project. I ommit to draw multiple albs and ecs nodes to do the graph basic.
 
