@@ -40,7 +40,7 @@ Basically and to understand very clear the diagram:
 * Blue arrows represent internal processing traffic
 * Red arrows represent update/release traffic
 
-All the items starting with aws_* are AWS resources
+All the items starting with aws_<any> are AWS resources
 
 At the Application Elastic load balancers(aws_aelb) and ECS tier it could be multiplexed in to multiple albs and ecs nodes depends of the deep details and requirements for the project. I ommit to draw multiple albs and ecs nodes to do the graph basic.
 
@@ -58,7 +58,7 @@ This solution approach over use AWS, so the teams and external teams and systems
 
 It is mandatory to have a Cloud Architect involved in the project and act as a lead for the whole solution with skills to integrate base current Architecture and convert it to this target Architecture. The Cloud Architect will work mainly with Operational(SysAdmin and Network), Developers and Business teams.
 
-## Architecture views
+## Architecture views
 
 MT note: Any other architecture views that you perceive as being relevant
 
