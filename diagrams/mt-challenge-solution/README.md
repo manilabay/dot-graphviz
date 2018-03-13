@@ -18,11 +18,11 @@ created by [Raul Andres](https://github.com/manilabay)
 
 ## MT-logical-architecture  
 
-![MT-logical-architecture](diagrams/mt-challenge-solution/mt-logical-architecture.png?raw=true "MT-logical-architecture")
+![MT-logical-architecture](mt-logical-architecture.png?raw=true "MT-logical-architecture")
 
 ## MT-logical-architecture  
 
-![MT-technical-architecture](diagrams/mt-challenge-solution/mt-logical-architecture.png?raw=true "MT-technical-architecture")
+![MT-technical-architecture](mt-technical-architecture.png?raw=true "MT-technical-architecture")
 
 ## High level risks
 
