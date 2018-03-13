@@ -9,18 +9,16 @@ It uses AWS icons but it could be used with any icons library creating another x
 
 Please feel free to reuse and hack it, enjoy!
 
+## MT Challenge example
+Raul Andres was challenged by MT company(masking the company name, but it is a real company) to do a Case-Study for an interview process and he decided to create the diagrams with code and later reuse his effort to build the next diagrams.
+
 ## Example Diagrams generated
+
+The architecture artefacts generated is in the folder [mt-challenge-solution](https://github.com/manilabay/dot-graphviz-aws/diagrams/mt-challenge-solution)
 
 ### MT-logical-architecture  
 
-![MT-logical-architecture](https://github.com/manilabay/dot-graphviz-aws/master/images/mt-logical-architecture.png?raw=true "MT-logical-architecture")
-
-
-
-### MT Challenge example
-Raul Andres was challenged by MT company(masking the company name, but it is a real company) to do a Case-Study for an interview process and he decided to create the diagrams with code and later reuse his effort to build the next diagrams.
-
-The architecture artefacts generated is in the folder [mt-challenge-solution](https://github/manilabay/dot-graphviz-aws/diagrams/mt-challenge-solution)
+![MT-logical-architecture](diagrams/mt-challenge-solution/mt-logical-architecture.png?raw=true "MT-logical-architecture")
 
 ## How to use
 
