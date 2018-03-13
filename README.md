@@ -11,6 +11,10 @@ Please feel free to reuse and hack it, enjoy!
 
 ## Example Diagrams generated
 
+### MT-logical-architecture  
+
+![MT-logical-architecture](https://github.com/manilabay/dot-graphviz-aws/master/images/mt-logical-architecture.png?raw=true "MT-logical-architecture")
+
 
 
 ### MT Challenge example
