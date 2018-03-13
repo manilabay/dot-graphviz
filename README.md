@@ -20,6 +20,16 @@ The architecture artefacts generated is in the folder [mt-challenge-solution](ht
 
 ![MT-logical-architecture](diagrams/mt-challenge-solution/mt-logical-architecture.png?raw=true "MT-logical-architecture")
 
+### MT-technical-architecture  
+
+![MT-technical-architecture](diagrams/mt-challenge-solution/mt-technical-architecture.png?raw=true "MT-technical-architecture")
+
+Basically and to understand very clear the diagram:
+
+* Green arrows represent end-to-end solution User traffic
+* Blue arrows represent internal processing traffic
+* Red arrows represent update/release traffic
+
 ## How to use
 
 0. Learn dot language and graphviz. To see some References below.
@@ -27,7 +37,7 @@ The architecture artefacts generated is in the folder [mt-challenge-solution](ht
 2. Create new README.md inside that new folder, using [this] https://github/manilabay/dot-graphviz-aws/diagrams/mt-challenge-solution/README.md as a template.
 3. Create dot code for the diagram you want create using language-dot syntax
 4. Show and share the diagrams and knowledge with your Architect mates.
-5. Get some reward, a coffee, a beer or why not a increase salary ;)
+5. Get some reward, a coffee, a beer or why not a salary increase ;)
 
 ## Dependencies
 

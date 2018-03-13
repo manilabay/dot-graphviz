@@ -1,5 +1,5 @@
 digraph G {
-    # web1 [shape=none, image="../../aws-icons/AWS_Simple_Icons_svg_eps/Compute & Networking/SVG/Compute & Networking copy_Amazon EC2 Instance.png"];
+    aws_lambda_functions [shape=none, image="../../aws-icons/Compute_AWSLambda_LambdaFunction.png"];
     # web2 [shape=none, image="../../aws-icons/AWS_Simple_Icons_svg_eps/Compute & Networking/SVG/Compute & Networking copy_Amazon EC2 Instance.png"];
     # app [shape=none, image="../../aws-icons/AWS_Simple_Icons_svg_eps/Compute & Networking/SVG/Compute & Networking copy_Amazon EC2 Instance.png"];
     # db  [shape=none, image="../../aws-icons/AWS_Simple_Icons_svg_eps/Database/SVG/Database copy_Amazon RDS MySQL DB Instance.png"];
@@ -24,13 +24,11 @@ digraph G {
     aws_ecs -> antiqueLP_ms_app [color="green"];
     aws_ecs -> orders_ms_app [color="green"];
 
-
     aws_codepipeline -> aws_gateway_api,aws_lambda_functions,aws_ecs [color="red"];
     aws_codebuild -> aws_codepipeline [color="red"];
     git_repos -> aws_codebuild [color="red"];
     CI_jenkins_or_bamboo -> aws_gateway_api,aws_lambda_functions,aws_ecs [color="red"];
     git_repos -> CI_jenkins_or_bamboo [color="red"];
-
 
     audiostream_ms_app -> {aws_rds_mysql} [color="red"];
     audiobooks_ms_app -> {aws_rds_mysql} [color="red"];
@@ -41,7 +39,6 @@ digraph G {
     aws_glue_ETL -> {aws_quicksight_BI} [color="blue"];
 
     aws_glue_ETL -> s3 [color="blue"];
-
 
     s3 -> aws_cloudfront_orders [color="blue"];
     s3 -> aws_cloudfront_stream [color="blue"];
