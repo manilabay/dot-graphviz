@@ -3,16 +3,17 @@ digraph architecture {
   rankdir=LR;
 
   subgraph client_side_apps {
-      front_ends_desk_and_mobile -> {_4yourears_auth_api} [color="green"];
-      customer -> {_4yourears_auth_api} [color="green"];
+      front_ends_desk_and_mobile -> {_4yourears_auth_api} [label="customer is auth passthrough" color="green"];
+
+      customer -> {front_ends_desk_and_mobile} [color="green"];
       retail -> {_4yourears_auth_api} [color="green"];
       _4yourears_auth_api -> {main_4yourears_api} [color="green"];
-      medium_supplier -> {front_end, front_ends_desk_and_mobile} [color="green"];
+      medium_supplier -> {front_ends_desk_and_mobile} [color="green"];
       large_supplier -> {_4yourears_auth_api} [color="green"];
       partner_backend -> {stream_partner_api} [color="green"];
       third_party_website_or_franchisee -> {_4yourears_auth_api} [color="green"];
 
-      {rank=same; front_end, front_ends_desk_and_mobile, _4yourears_auth_api} [color="green"];
+      {rank=same; front_ends_desk_and_mobile, _4yourears_auth_api} [color="green"];
   }
 
   subgraph api_gateways {

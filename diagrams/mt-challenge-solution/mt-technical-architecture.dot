@@ -1,5 +1,5 @@
 digraph G {
-    aws_lambda_functions [shape=none, image="../../aws-icons/Compute_AWSLambda_LambdaFunction.png"];
+    # aws_lambda_functions [shape=none, image="../../aws-icons/Compute_AWSLambda_LambdaFunction.png"];
     # web2 [shape=none, image="../../aws-icons/AWS_Simple_Icons_svg_eps/Compute & Networking/SVG/Compute & Networking copy_Amazon EC2 Instance.png"];
     # app [shape=none, image="../../aws-icons/AWS_Simple_Icons_svg_eps/Compute & Networking/SVG/Compute & Networking copy_Amazon EC2 Instance.png"];
     # db  [shape=none, image="../../aws-icons/AWS_Simple_Icons_svg_eps/Database/SVG/Database copy_Amazon RDS MySQL DB Instance.png"];
@@ -17,18 +17,24 @@ digraph G {
 
     audiostream_ms_app  ->  stream_partner_api [color="green"];
 
-    aws_aelb -> aws_ecs [color="blue"];
+    aws_aelb -> aws_ecs [color="green"];
 
     aws_ecs -> audiostream_ms_app [color="green"];
     aws_ecs -> audiobooks_ms_app [color="green"];
     aws_ecs -> antiqueLP_ms_app [color="green"];
     aws_ecs -> orders_ms_app [color="green"];
 
-    aws_codepipeline -> aws_gateway_api,aws_lambda_functions,aws_ecs [color="red"];
-    aws_codebuild -> aws_codepipeline [color="red"];
-    git_repos -> aws_codebuild [color="red"];
-    CI_jenkins_or_bamboo -> aws_gateway_api,aws_lambda_functions,aws_ecs [color="red"];
+    aws_codebuild -> aws_gateway_api,aws_lambda_functions,aws_ecs [color="red"];
+    aws_codepipeline -> aws_codebuild [color="red"];
+    developers -> git_repos [color="red"];
+    git_repos -> aws_codepipeline [color="red"];
+    CI_jenkins_or_bamboo -> aws_gateway_api,aws_lambda_functions [color="red"];
     git_repos -> CI_jenkins_or_bamboo [color="red"];
+    CI_jenkins_or_bamboo -> aws_ecr [color="red"];
+    aws_codebuild -> aws_ecr [color="red"];
+    aws_ecr -> aws_ecs [color="red"];
+
+    aws_cloudformation_or_terraform -> all_aws_objects_used [label="Cloud Infra Automation" color="red"];
 
     audiostream_ms_app -> {aws_rds_mysql} [color="red"];
     audiobooks_ms_app -> {aws_rds_mysql} [color="red"];
