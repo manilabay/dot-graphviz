@@ -7,6 +7,8 @@ digraph architecture {
 
       customer -> {front_ends_desk_and_mobile} [color="green"];
       retail -> {_4yourears_auth_api} [color="green"];
+      social_idp -> {_4yourears_auth_api} [label="saml" color="green"];
+      enterprise_idp -> {_4yourears_auth_api} [label="saml" color="green"];
       _4yourears_auth_api -> {main_4yourears_api} [color="green"];
       medium_supplier -> {front_ends_desk_and_mobile} [color="green"];
       large_supplier -> {_4yourears_auth_api} [color="green"];

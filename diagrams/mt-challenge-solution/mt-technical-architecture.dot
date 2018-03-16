@@ -11,6 +11,9 @@ digraph G {
 
     auth_api -> aws_lambda_functions [color="green"];
 
+    aws_cognito_sso_social_IdP -> auth_api [label="saml" color="blue"];
+    enterprise_sso_ADFS_or_forgerock_IdP -> auth_api [label="saml" color="blue"];
+
     aws_lambda_functions -> aws_gateway_api [color="green"];
 
     aws_gateway_api -> aws_aelb [color="green"];
