@@ -1,0 +1,52 @@
+digraph G {
+    aws_lambda_functions [shape=none, image="../../aws-icons/Compute_AWSLambda_LambdaFunction.png"];
+    # web2 [shape=none, image="../../aws-icons/AWS_Simple_Icons_svg_eps/Compute & Networking/SVG/Compute & Networking copy_Amazon EC2 Instance.png"];
+    # app [shape=none, image="../../aws-icons/AWS_Simple_Icons_svg_eps/Compute & Networking/SVG/Compute & Networking copy_Amazon EC2 Instance.png"];
+    # db  [shape=none, image="../../aws-icons/AWS_Simple_Icons_svg_eps/Database/SVG/Database copy_Amazon RDS MySQL DB Instance.png"];
+    # db_slave  [shape=none, image="../../aws-icons/AWS_Simple_Icons_svg_eps/Database/SVG/Database copy_Amazon RDS MySQL DB Instance.png"];
+    # s3  [image="../../aws-icons/AWS_Simple_Icons_svg_eps/Storage & Content Delivery/SVG/Storage & Content Delivery_Amazon S3.png"];
+    # gl  [shape=none, image="../../aws-icons/AWS_Simple_Icons_svg_eps/Storage & Content Delivery/SVG/Storage & Content Delivery_Amazon Glacier.png"];
+
+    all_http_traffic_requests -> auth_api [color="green"];
+
+    auth_api -> aws_lambda_functions [color="green"];
+
+    aws_lambda_functions -> aws_gateway_api [color="green"];
+
+    aws_gateway_api -> aws_aelb [color="green"];
+
+    audiostream_ms_app  ->  stream_partner_api [color="green"];
+
+    aws_aelb -> aws_ecs [color="blue"];
+
+    aws_ecs -> audiostream_ms_app [color="green"];
+    aws_ecs -> audiobooks_ms_app [color="green"];
+    aws_ecs -> antiqueLP_ms_app [color="green"];
+    aws_ecs -> orders_ms_app [color="green"];
+
+    aws_codepipeline -> aws_gateway_api,aws_lambda_functions,aws_ecs [color="red"];
+    aws_codebuild -> aws_codepipeline [color="red"];
+    git_repos -> aws_codebuild [color="red"];
+    CI_jenkins_or_bamboo -> aws_gateway_api,aws_lambda_functions,aws_ecs [color="red"];
+    git_repos -> CI_jenkins_or_bamboo [color="red"];
+
+    audiostream_ms_app -> {aws_rds_mysql} [color="red"];
+    audiobooks_ms_app -> {aws_rds_mysql} [color="red"];
+    antiqueLP_ms_app -> {aws_rds_mysql} [color="red"];
+    orders_ms_app -> {aws_rds_mysql} [color="red"];
+
+    aws_rds_mysql -> {aws_glue_ETL} [color="blue"];
+    aws_glue_ETL -> {aws_quicksight_BI} [color="blue"];
+
+    aws_glue_ETL -> s3 [color="blue"];
+
+    s3 -> aws_cloudfront_orders [color="blue"];
+    s3 -> aws_cloudfront_stream [color="blue"];
+    s3 -> aws_glacier [color="blue"];
+
+    s3 -> aws_kinesis_data_analytics [color="blue"];
+
+    all_stream_or_batch_traffic_requests -> aws_cloudfront_orders,aws_cloudfront_stream [color="green"];
+
+
+}
