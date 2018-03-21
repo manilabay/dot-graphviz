@@ -1,7 +1,7 @@
 
 # Data Pipeline Architecture Reference
 
-Deliverables created by for Raul Andres, this document is the artifacts delivered to TF to help himself in an Interview process. Cross the fingers and wish luck to him ;)
+Deliverables created by Raul Andres, this document is the artefacts delivered to TF to help himself in an interview process. Cross the fingers and wish luck to him ;)
 
 It was 1 day of work, so please assume some errors by the author or improvements to-do.
 Also please feel free to send feedback via PR.
@@ -13,7 +13,7 @@ created by [Raul Andres](https://github.com/manilabay)
 
 ## Solution Approach
 
-The approach is to design a E2E Data Pipeline from Data-driven, Strategy Design, Scalability, Analytics, Monitoring and Reliability viewpoints. It was designed for huge data pipeline implementations.
+The approach is to design a E2E Data Pipeline from Data-driven, Strategy Design, Scalability, Analytics, Monitoring, Reliability and Delivery **viewpoints**. It was designed for huge data pipeline implementations.
 
 It doesn't include Infra Architecture(Cloud approach) and Data Security viewpoint. TO-DO
 
