@@ -59,3 +59,7 @@ This is the Official AWS icons collection downloaded from
 
 [Learn Dot language](https://www.graphviz.org/doc/info/lang.html)
 [Learn Graphviz language](https://www.graphviz.org)
+
+## TODO
+
+* Create a docker image with dot and graphviz to use as a function to generate graphviz object onfly. Atm you could use this [simple command](https://github.com/manilabay/dot-graphviz-aws/tree/master/diagrams) 
