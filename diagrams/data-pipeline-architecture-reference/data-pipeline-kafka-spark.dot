@@ -1,0 +1,71 @@
+digraph datapipeline {
+  rankdir=LR;
+
+  subgraph datapipeline_technical {
+
+    #Sources - E
+    APIs -> Kafka [dir="both"]
+
+    RDBMS -> Kafka [dir="both"]
+    NoSQL -> Kafka [dir="both"]
+    NewSQL -> Kafka [dir="both"]
+    Apps -> Kafka [dir="both"]
+    Search -> Kafka [dir="both"]
+    Monitoring -> Kafka [dir="both"]
+    SDLC -> Kafka [dir="both"]
+    Infra -> Kafka [dir="both"]
+    Cloud -> Kafka [dir="both"]
+    Legacy -> Kafka [dir="both" label="ALL are bidirectional producer & consumer"]
+    IoT -> Kafka [dir="both"]
+    GIS_Raster -> Kafka
+
+    data_developers -> git_repos
+    data_developers -> Notebooks_Apache_Zeppelin
+    data_developers -> Apache_NiFi
+    Notebooks_Apache_Zeppelin -> hook_export_to_git
+    Apache_NiFi -> hook_export_to_git
+    hook_export_to_git -> git_repos
+    git_repos -> CI_jenkins_bamboo_or_any
+    CI_jenkins_bamboo_or_any -> Spark_Streaming [label="build/deploy/test"]
+    Apache_NiFi -> Kafka [dir="both"]
+    Apache_NiFi -> Spark_Streaming
+
+
+    #Hub
+    Kafka -> Spark_Streaming [dir="both"]
+
+    #Proccessing - T
+
+
+    #Targets - L
+    Spark_Streaming -> data_storage
+    data_storage -> S3
+    data_storage -> RDS
+    S3 -> AWS_Athena [label="sql"]
+    Spark_Streaming -> Dashboards
+
+    data_analysts -> Dashboards
+    business_users -> Dashboards
+    data_analysts -> AWS_Athena
+
+    Dashboards -> Tableau
+    Dashboards -> Graphana
+    Dashboards -> Graphite
+    Dashboards -> D3
+    Dashboards -> any_visualization_tool
+
+  }
+
+  subgraph datapipeline_logical {
+        data_ingestion_0 -> data_collector_1
+        data_collector_1 -> data_processing_2
+        data_processing_2 -> data_storage_3 [label="batch"]
+        data_processing_2 -> data_query_3
+        data_processing_2 -> data_visualization_3 [label="stream real-time"]
+        data_storage_3 -> data_query_3
+        data_query_3 -> data_visualization_3
+        data_storage_3 -> data_visualization_3
+
+  }
+
+}
