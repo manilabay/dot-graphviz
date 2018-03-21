@@ -1,7 +1,7 @@
 digraph datapipeline {
-  rankdir=LR;
+    rankdir=LR;
 
-  subgraph datapipeline_technical {
+    subgraph datapipeline_technical {
 
     #Sources - E
     APIs -> Kafka [dir="both"]
@@ -19,7 +19,6 @@ digraph datapipeline {
     IoT -> Kafka [dir="both"]
     GIS_Raster -> Kafka
 
-    data_developers -> git_repos
     data_developers -> Notebooks_Apache_Zeppelin
     data_developers -> Apache_NiFi
     Notebooks_Apache_Zeppelin -> hook_export_to_git
@@ -32,27 +31,51 @@ digraph datapipeline {
 
 
     #Hub
-    Kafka -> Spark_Streaming [dir="both"]
+    Kafka -> Spark_Streaming [label="events"]
+    Spark_Streaming -> Kafka [label="facts"]
 
-    #Proccessing - T
-
+    #Monitoring - M
+    Data_Monitoring -> Data_Spark_Listeners
+    data_developers -> Data_Monitoring
+    Data_Spark_Listeners -> git_repos
+    Performance_Monitoring -> Ganglia
+    Performance_Monitoring -> Spark_Measure
+    Performance_Monitoring -> Spark_Listeners
+    Performance_Monitoring -> Spark_Lint
+    Performance_Monitoring -> Stack_Profiling_and_Flame_Graphs
+    Performance_Monitoring -> OS_Tools
+    Performance_Monitoring -> Workload_Scale
+    Stack_Profiling_and_Flame_Graphs -> Spark_Streaming [label="async_profiler"]
+    Ganglia -> Spark_Streaming
+    Spark_Listeners -> Spark_Streaming
+    Spark_Measure -> Spark_Streaming
+    Spark_Lint -> Spark_Streaming
+    OS_Tools -> Spark_Streaming
+    Workload_Scale -> Spark_Streaming
+    Pipeline_Monitoring -> Dummy_Data_Jobs
+    Dummy_Data_Jobs -> CI_jenkins_bamboo_or_any
 
     #Targets - L
     Spark_Streaming -> data_storage
     data_storage -> S3
+    data_storage -> Parquet
+    data_storage -> Cassandra
+    data_storage -> HDFS
     data_storage -> RDS
     S3 -> AWS_Athena [label="sql"]
     Spark_Streaming -> Dashboards
 
     data_analysts -> Dashboards
     business_users -> Dashboards
-    data_analysts -> AWS_Athena
 
     Dashboards -> Tableau
     Dashboards -> Graphana
     Dashboards -> Graphite
     Dashboards -> D3
+    Dashboards -> AWS_QuickSight
+    Dashboards -> AWS_Athena
     Dashboards -> any_visualization_tool
+
 
   }
 
@@ -65,6 +88,7 @@ digraph datapipeline {
         data_storage_3 -> data_query_3
         data_query_3 -> data_visualization_3
         data_storage_3 -> data_visualization_3
+        data_visualization_3 -> data_monitoring_4
 
   }
 
