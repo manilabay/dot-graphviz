@@ -31,10 +31,10 @@ The above image represent a deep detailed technical architecture reference for a
 
 Basically and to understand easier the diagram:
 
-* Green arrows represent events/facts/storage traffic
-* Blue arrows represent internal design strategy traffic and update/release traffic
+* Green arrows represent events/facts/storage dataflow traffic
+* Blue arrows represent internal design strategy traffic and setup/update/release workflow traffic
 * Red arrows represent monitoring traffic
-* Orange arrows represent end user visualization traffic
+* Orange arrows represent end user data visualization traffic
 
 ## Envelop project: dot-graphviz-aws
 These deliverables were created using another solution and git repo created by Raul Andres to create an amazing idea to generate Architecture diagrams using dot language + graphviz + git. Lets start to create and modify Architecture diagrams in agile way.
