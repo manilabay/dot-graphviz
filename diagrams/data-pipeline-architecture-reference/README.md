@@ -1,7 +1,7 @@
 
 # Data Pipeline Architecture Reference
 
-Deliverables created by Raul Andres, this document is the artefacts delivered to TF to help himself in an interview process. Cross the fingers and wish luck to him ;)
+Deliverables created by Raul Andres, this document is the artefacts delivered to TF to help himself in an interview process. Cross the fingers and wish him good luck ;)
 
 It was 1 day of work, so please assume some errors by the author or improvements to-do.
 Also please feel free to send feedback via PR.
