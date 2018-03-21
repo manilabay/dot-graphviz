@@ -4,92 +4,86 @@ digraph datapipeline {
     subgraph datapipeline_technical {
 
     #Sources - E
-    APIs -> Kafka [dir="both"]
+    APIs -> Kafka [dir="both" color="green"]
 
-    RDBMS -> Kafka [dir="both"]
-    NoSQL -> Kafka [dir="both"]
-    NewSQL -> Kafka [dir="both"]
-    Apps -> Kafka [dir="both"]
-    Search -> Kafka [dir="both"]
-    Monitoring -> Kafka [dir="both"]
-    SDLC -> Kafka [dir="both"]
-    Infra -> Kafka [dir="both"]
-    Cloud -> Kafka [dir="both"]
-    Legacy -> Kafka [dir="both" label="ALL are bidirectional producer & consumer"]
-    IoT -> Kafka [dir="both"]
-    GIS_Raster -> Kafka
+    RDBMS -> Kafka [dir="both" color="green"]
+    NoSQL -> Kafka [dir="both" color="green"]
+    NewSQL -> Kafka [dir="both" color="green"]
+    Apps -> Kafka [dir="both" color="green"]
+    Search -> Kafka [dir="both" color="green"]
+    Monitoring -> Kafka [dir="both" color="green"]
+    SDLC -> Kafka [dir="both" color="green"]
+    Infra -> Kafka [dir="both" color="green"]
+    Cloud -> Kafka [dir="both" color="green"]
+    Legacy -> Kafka [dir="both" label="ALL are bidirectional producer & consumer" color="green"]
+    IoT -> Kafka [dir="both" color="green"]
+    GIS_Raster -> Kafka [color="green"]
 
-    data_developers -> Notebooks_Apache_Zeppelin
-    data_developers -> Apache_NiFi
-    Notebooks_Apache_Zeppelin -> hook_export_to_git
-    Apache_NiFi -> hook_export_to_git
-    hook_export_to_git -> git_repos
-    git_repos -> CI_jenkins_bamboo_or_any
-    CI_jenkins_bamboo_or_any -> Spark_Streaming [label="build/deploy/test"]
-    Apache_NiFi -> Kafka [dir="both"]
-    Apache_NiFi -> Spark_Streaming
-
+    data_developers -> Notebooks_Apache_Zeppelin [color="blue"]
+    data_developers -> Apache_NiFi [color="blue"]
+    Notebooks_Apache_Zeppelin -> hook_export_to_git [color="blue"]
+    Apache_NiFi -> hook_export_to_git [color="blue"]
+    hook_export_to_git -> git_repos [color="blue"]
+    git_repos -> CI_jenkins_bamboo_or_any [color="blue"]
+    CI_jenkins_bamboo_or_any -> Spark_Streaming [label="build/deploy/test"] [color="blue"]
+    Apache_NiFi -> Kafka [dir="both"] [color="green"]
+    Apache_NiFi -> Spark_Streaming [color="blue"]
 
     #Hub
-    Kafka -> Spark_Streaming [label="events"]
-    Spark_Streaming -> Kafka [label="facts"]
+    Kafka -> Spark_Streaming [label="events" color="green"]
+    Spark_Streaming -> Kafka [label="facts" color="green"]
 
     #Monitoring - M
-    Data_Monitoring -> Data_Spark_Listeners
-    data_developers -> Data_Monitoring
-    Data_Spark_Listeners -> git_repos
-    Performance_Monitoring -> Ganglia
-    Performance_Monitoring -> Spark_Measure
-    Performance_Monitoring -> Spark_Listeners
-    Performance_Monitoring -> Spark_Lint
-    Performance_Monitoring -> Stack_Profiling_and_Flame_Graphs
-    Performance_Monitoring -> OS_Tools
-    Performance_Monitoring -> Workload_Scale
-    Stack_Profiling_and_Flame_Graphs -> Spark_Streaming [label="async_profiler"]
-    Ganglia -> Spark_Streaming
-    Spark_Listeners -> Spark_Streaming
-    Spark_Measure -> Spark_Streaming
-    Spark_Lint -> Spark_Streaming
-    OS_Tools -> Spark_Streaming
-    Workload_Scale -> Spark_Streaming
-    Pipeline_Monitoring -> Dummy_Data_Jobs
-    Dummy_Data_Jobs -> CI_jenkins_bamboo_or_any
+    Data_Monitoring -> Data_Spark_Listeners [color="red"]
+    data_developers -> Data_Monitoring [color="red"]
+    Data_Spark_Listeners -> git_repos [color="red"]
+    Performance_Monitoring -> Ganglia [color="red"]
+    Performance_Monitoring -> Spark_Measure [color="red"]
+    Performance_Monitoring -> Spark_Listeners [color="red"]
+    Performance_Monitoring -> Spark_Lint [color="red"]
+    Performance_Monitoring -> Stack_Profiling_and_Flame_Graphs [color="red"]
+    Performance_Monitoring -> OS_Tools [color="red"]
+    Performance_Monitoring -> Workload_Scale [color="red"]
+    Stack_Profiling_and_Flame_Graphs -> Spark_Streaming [label="async_profiler"] [color="red"]
+    Ganglia -> Spark_Streaming [color="red"]
+    Spark_Listeners -> Spark_Streaming [color="red"]
+    Spark_Measure -> Spark_Streaming [color="red"]
+    Spark_Lint -> Spark_Streaming [color="red"]
+    OS_Tools -> Spark_Streaming [color="red"]
+    Workload_Scale -> Spark_Streaming [color="red"]
+    Pipeline_Monitoring -> Dummy_Data_Jobs [color="red"]
+    Dummy_Data_Jobs -> CI_jenkins_bamboo_or_any [color="red"]
+
+    #Analytics - A
+    Spark_Streaming -> Analytics [label="enriched dta"] [color="green"]
+    Analytics -> MLib_artifacts [color="green"]
+    Analytics -> Spark_SQL_artifacts [color="green"]
+    MLib_artifacts -> Spark_Streaming [color="green"]
+    Spark_SQL_artifacts -> Spark_Streaming [color="green"]
+    MLib_artifacts -> Kafka_port [label="facts"] [color="green"]
+    Spark_SQL_artifacts -> Kafka_port [label="facts"] [color="green"]
 
     #Targets - L
-    Spark_Streaming -> data_storage
-    data_storage -> S3
-    data_storage -> Parquet
-    data_storage -> Cassandra
-    data_storage -> HDFS
-    data_storage -> RDS
-    S3 -> AWS_Athena [label="sql"]
-    Spark_Streaming -> Dashboards
+    Spark_Streaming -> data_storage [color="green"]
+    data_storage -> S3 [color="green"]
+    data_storage -> Parquet [color="green"]
+    data_storage -> Cassandra [color="green"]
+    data_storage -> HDFS [color="green"]
+    data_storage -> RDS [color="green"]
+    S3 -> AWS_Athena [label="sql"] [color="orange"]
+    Spark_Streaming -> Dashboards [color="orange"]
 
-    data_analysts -> Dashboards
-    business_users -> Dashboards
+    data_analysts -> Dashboards [color="orange"]
+    business_users -> Dashboards [color="orange"]
 
-    Dashboards -> Tableau
-    Dashboards -> Graphana
-    Dashboards -> Graphite
-    Dashboards -> D3
-    Dashboards -> AWS_QuickSight
-    Dashboards -> AWS_Athena
-    Dashboards -> any_visualization_tool
+    Dashboards -> Tableau [color="orange"]
+    Dashboards -> Graphana [color="orange"]
+    Dashboards -> Graphite [color="orange"]
+    Dashboards -> D3 [color="orange"]
+    Dashboards -> AWS_QuickSight [color="orange"]
+    Dashboards -> AWS_Athena [color="orange"]
+    Dashboards -> any_visualization_tool [color="orange"]
 
-
-  }
-
-  subgraph datapipeline_logical {
-        data_ingestion_0 -> data_collector_1
-        data_collector_1 -> data_processing_2
-        data_processing_2 -> data_storage_3 [label="batch"]
-        data_processing_2 -> data_query_3
-        data_processing_2 -> data_visualization_3 [label="stream real-time"]
-        data_storage_3 -> data_query_3
-        data_query_3 -> data_visualization_3
-        data_storage_3 -> data_visualization_3
-        data_visualization_3 -> data_monitoring_4
-
-  }
+ }
 
 }

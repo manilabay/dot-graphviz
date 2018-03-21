@@ -1,0 +1,17 @@
+digraph datapipeline {
+    rankdir=LR;
+
+    subgraph datapipeline_logical {
+          data_ingestion_0 -> data_collector_1
+          data_collector_1 -> data_processing_2
+          data_processing_2 -> data_storage_3 [label="batch"]
+          data_processing_2 -> data_query_3
+          data_processing_2 -> data_visualization_3 [label="stream real-time"]
+          data_storage_3 -> data_query_3
+          data_query_3 -> data_visualization_3
+          data_storage_3 -> data_visualization_3
+          data_monitoring_4 -> data_ingestion_0
+          data_monitoring_4 -> data_collector_1
+          data_monitoring_4 -> data_processing_2
+    }
+}
