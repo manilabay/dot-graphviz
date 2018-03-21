@@ -13,9 +13,9 @@ created by [Raul Andres](https://github.com/manilabay)
 
 ## Solution Approach
 
-The approach is to design a E2E Data Pipeline from Data-driven, Strategy Design, Scalability, Analytics, Monitoring and Reliability viewpoints.
+The approach is to design a E2E Data Pipeline from Data-driven, Strategy Design, Scalability, Analytics, Monitoring and Reliability viewpoints. It was designed for huge data pipeline implementations.
 
-It doesn't include Infra Architecture and Data Security viewpoint. TO-DO
+It doesn't include Infra Architecture(Cloud approach) and Data Security viewpoint. TO-DO
 
 ## TF-logical-architecture  
 
@@ -23,17 +23,11 @@ It doesn't include Infra Architecture and Data Security viewpoint. TO-DO
 
 The above image represent an abstract high view and logical architecture for a Data Pipeline
 
-Basically and to understand easier the diagram:
-
-* Green arrows represent end-to-end solution User traffic
-* Blue arrows represent internal processing traffic
-* Red arrows represent update/release traffic
-
 ## TF-technical-architecture  
 
-The above image represent a deep detailed technical architecture reference for a Data Pipeline
-
 ![TF-technical-architecture](TF-technical-data-architecture.png?raw=true "TF-technical-data-architecture")
+
+The above image represent a deep detailed technical architecture reference for a Data Pipeline
 
 Basically and to understand easier the diagram:
 
