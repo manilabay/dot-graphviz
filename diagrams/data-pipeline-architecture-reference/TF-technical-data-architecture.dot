@@ -19,15 +19,25 @@ digraph datapipeline {
     IoT -> Kafka [dir="both" color="green"]
     GIS_Raster -> Kafka [color="green"]
 
-    data_developers -> Notebooks_Apache_Zeppelin [color="blue"]
-    data_developers -> Apache_NiFi [color="blue"]
+    data_developers_and_data_scientists -> Notebooks_Apache_Zeppelin [color="blue"]
+    data_developers_and_data_scientists -> Notebooks_Databricks [color="blue"]
+    data_developers_and_data_scientists -> Test_Frameworks [color="blue"]
+    Test_Frameworks -> ScalaTest [color="blue"]
+    Test_Frameworks -> Spark_Testing_base [color="blue"]
+    Test_Frameworks -> more_Test_Frameworks [color="blue"]
+    ScalaTest -> git_repos [color="blue"]
+    Spark_Testing_base -> git_repos [color="blue"]
+    more_Test_Frameworks -> git_repos [color="blue"]
+    data_developers_and_data_scientists -> Apache_NiFi [color="blue"]
     Notebooks_Apache_Zeppelin -> hook_export_to_git [color="blue"]
+    Notebooks_Databricks -> hook_export_to_git [color="blue"]
     Apache_NiFi -> hook_export_to_git [color="blue"]
     hook_export_to_git -> git_repos [color="blue"]
     git_repos -> CI_jenkins_bamboo_or_any [color="blue"]
     CI_jenkins_bamboo_or_any -> Spark_Streaming [label="build/deploy/test"] [color="blue"]
     Apache_NiFi -> Kafka [dir="both"] [color="green"]
     Apache_NiFi -> Spark_Streaming [color="blue"]
+    CI_jenkins_bamboo_or_any -> Personas_Teams [label="Notifications"] [color="red"]
 
     #Hub
     Kafka -> Spark_Streaming [label="events" color="green"]
@@ -35,7 +45,7 @@ digraph datapipeline {
 
     #Monitoring - M
     Data_Monitoring -> Data_Spark_Listeners [color="red"]
-    data_developers -> Data_Monitoring [color="red"]
+    data_developers_and_data_scientists -> Data_Monitoring [color="red"]
     Data_Spark_Listeners -> git_repos [color="red"]
     Performance_Monitoring -> Ganglia [color="red"]
     Performance_Monitoring -> Spark_Measure [color="red"]
@@ -44,6 +54,8 @@ digraph datapipeline {
     Performance_Monitoring -> Stack_Profiling_and_Flame_Graphs [color="red"]
     Performance_Monitoring -> OS_Tools [color="red"]
     Performance_Monitoring -> Workload_Scale [color="red"]
+    Performance_Monitoring -> spark_perf [color="red"]
+    spark_perf -> Spark_Streaming [color="red"]
     Stack_Profiling_and_Flame_Graphs -> Spark_Streaming [label="async_profiler"] [color="red"]
     Ganglia -> Spark_Streaming [color="red"]
     Spark_Listeners -> Spark_Streaming [color="red"]
@@ -83,6 +95,8 @@ digraph datapipeline {
     Dashboards -> AWS_QuickSight [color="orange"]
     Dashboards -> AWS_Athena [color="orange"]
     Dashboards -> any_visualization_tool [color="orange"]
+    Dashboards -> Security_Frameworks [color="orange"]
+    Security_Frameworks -> Disable_Dashboards_Capabilities_to_Avoid_Dump_to_Local [color="orange"]
 
  }
 
