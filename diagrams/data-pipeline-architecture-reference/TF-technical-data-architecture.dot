@@ -47,6 +47,8 @@ digraph datapipeline {
     Data_Monitoring -> Data_Spark_Listeners [color="red"]
     data_developers_and_data_scientists -> Data_Monitoring [color="red"]
     Data_Spark_Listeners -> git_repos [color="red"]
+    devops -> Performance_Monitoring [label="automated setup" color="blue"]
+    devops -> E2E_Infrastructure_Data_Pipeline_Architecture [label="automated setup" color="blue"]
     Performance_Monitoring -> Ganglia [color="red"]
     Performance_Monitoring -> Spark_Measure [color="red"]
     Performance_Monitoring -> Spark_Listeners [color="red"]
@@ -55,6 +57,7 @@ digraph datapipeline {
     Performance_Monitoring -> OS_Tools [color="red"]
     Performance_Monitoring -> Workload_Scale [color="red"]
     Performance_Monitoring -> spark_perf [color="red"]
+    Performance_Monitoring -> Kafka [color="red"]
     spark_perf -> Spark_Streaming [color="red"]
     Stack_Profiling_and_Flame_Graphs -> Spark_Streaming [label="async_profiler"] [color="red"]
     Ganglia -> Spark_Streaming [color="red"]
@@ -63,8 +66,8 @@ digraph datapipeline {
     Spark_Lint -> Spark_Streaming [color="red"]
     OS_Tools -> Spark_Streaming [color="red"]
     Workload_Scale -> Spark_Streaming [color="red"]
-    Pipeline_Monitoring -> Dummy_Data_Jobs [color="red"]
-    Dummy_Data_Jobs -> CI_jenkins_bamboo_or_any [color="red"]
+    Pipeline_Monitoring -> Dummy_Sample_Data_Jobs [color="red"]
+    Dummy_Sample_Data_Jobs -> CI_jenkins_bamboo_or_any [label="CI automated test" color="red"]
 
     #Analytics - A
     Spark_Streaming -> Analytics [label="enriched dta"] [color="green"]
@@ -85,8 +88,9 @@ digraph datapipeline {
     S3 -> AWS_Athena [label="sql"] [color="orange"]
     Spark_Streaming -> Dashboards [color="orange"]
 
-    data_analysts -> Dashboards [color="orange"]
-    business_users -> Dashboards [color="orange"]
+    data_analysts -> Dashboards [label="consume" color="green"]
+    business_users -> Dashboards [label="consume" color="green"]
+    devops_and_BI_consultants -> Dashboards [label="setup" color="blue"]
 
     Dashboards -> Tableau [color="orange"]
     Dashboards -> Graphana [color="orange"]
