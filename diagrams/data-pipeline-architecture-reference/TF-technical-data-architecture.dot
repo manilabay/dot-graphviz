@@ -47,8 +47,10 @@ digraph datapipeline {
     Data_Monitoring -> Data_Spark_Listeners [color="red"]
     data_developers_and_data_scientists -> Data_Monitoring [color="red"]
     Data_Spark_Listeners -> git_repos [color="red"]
-    devops -> Performance_Monitoring [label="automated setup" color="blue"]
-    devops -> E2E_Infrastructure_Data_Pipeline_Architecture [label="automated setup" color="blue"]
+    data_scientists -> Performance_Monitoring [label="automated setup" color="blue"]
+    expert_devops -> data_scientists [label="collaboration" color="blue"]
+    expert_devops -> Performance_Monitoring [label="automated setup" color="blue"]
+    expert_devops -> E2E_Infrastructure_Data_Pipeline_Architecture [label="automated setup" color="blue"]
     Performance_Monitoring -> Ganglia [color="red"]
     Performance_Monitoring -> Spark_Measure [color="red"]
     Performance_Monitoring -> Spark_Listeners [color="red"]
@@ -79,6 +81,7 @@ digraph datapipeline {
     Spark_SQL_artifacts -> Kafka_port [label="facts"] [color="green"]
 
     #Targets - L
+    data_architects -> data_storage [color="blue"]
     Spark_Streaming -> data_storage [color="green"]
     data_storage -> S3 [color="green"]
     data_storage -> Parquet [color="green"]
