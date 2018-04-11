@@ -39,7 +39,7 @@ Basically and to understand very clear the diagram:
 1. Create a new folder inside diagrams folder
 2. Create new README.md inside that new folder, using [this] https://github/manilabay/dot-graphviz-aws/diagrams/mt-challenge-solution/README.md as a template.
 3. Create dot code for the diagram you want create using language-dot syntax
-4. [Convert dot file to png](#convert-dot-to-png) (see below)
+4. Convert dot file to png (see below)
 5. Show and share the diagrams and knowledge with your Architect mates.
 6. Get some reward, a coffee, a beer or why not a salary increase ;)
 
