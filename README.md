@@ -1,4 +1,4 @@
-# dot-graphviz-aws
+# dot-graphviz
 This project is another PoC by Raul Andres to create an amazing idea to generate Architecture diagrams using dot language + graphviz + aws icons + git . Lets start to create and modify Architecture diagrams in agile way! ;)
 
 This idea Raul Andres thought 2 years ago to agilize the Architecture workflow and now it is the time to create the solution and put in practice.
@@ -39,8 +39,24 @@ Basically and to understand very clear the diagram:
 1. Create a new folder inside diagrams folder
 2. Create new README.md inside that new folder, using [this] https://github/manilabay/dot-graphviz-aws/diagrams/mt-challenge-solution/README.md as a template.
 3. Create dot code for the diagram you want create using language-dot syntax
-4. Show and share the diagrams and knowledge with your Architect mates.
-5. Get some reward, a coffee, a beer or why not a salary increase ;)
+4. [Convert dot file to png](#convert-dot-to-png) (see below)
+5. Show and share the diagrams and knowledge with your Architect mates.
+6. Get some reward, a coffee, a beer or why not a salary increase ;)
+
+## Convert dot to png
+<aside class="notice">
+TO-DO: run the convert command within Docker graphviz+docker container
+</aside>
+
+```console
+dot -Tpng input.dot > output.png
+```
+
+As a example to create the diagram for the mt-logical-architecture you must run:
+
+```console
+dot -Tpng mt-logical-architecture.dot > mt-logical-architecture.png
+```
 
 ## Dependencies
 
