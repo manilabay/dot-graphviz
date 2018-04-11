@@ -1,7 +1,7 @@
 # dot-graphviz
-This project is another PoC by Raul Andres to create an amazing idea to generate Architecture diagrams using dot language + graphviz + aws icons + git . Lets start to create and modify Architecture diagrams in agile way! ;)
+This project is another Proof of Value by Raul Andres to develop an idea to generate Architecture diagrams using dot language + graphviz + aws icons + git . Lets start to create and modify Architecture diagrams in agile way! ;) Architecture as a code AaaC will become soon ;)
 
-This idea Raul Andres thought 2 years ago to agilize the Architecture workflow and now it is the time to create the solution and put in practice.
+This idea Raul Andres thought 2 years ago to agilize the Architecture Governance workflow and now it is the time to create the solution and put in practice.
 
 The goals is to personally reuse this technic to be more efficient and agile in the next Architecture jobs he will do.
 
@@ -78,4 +78,4 @@ This is the Official AWS icons collection downloaded from
 
 ## TODO
 
-* Create a docker image with dot and graphviz to use as a function to generate graphviz object onfly. Atm you could use this [simple command](https://github.com/manilabay/dot-graphviz-aws/tree/master/diagrams) 
+* Create a docker image with dot and graphviz to use as a function to generate graphviz object onfly. Atm you could use this [simple command](https://github.com/manilabay/dot-graphviz-aws/tree/master/diagrams)
