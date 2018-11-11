@@ -44,9 +44,17 @@ Basically and to understand very clear the diagram:
 6. Get some reward, a coffee, a beer or why not a salary increase ;)
 
 ## Convert dot to png
-<aside class="notice">
-TO-DO: run the convert command within Docker graphviz+docker container
-</aside>
+
+### Using Docker convert container
+You could use [my another repo](https://github.com/manilabay/docker-graphviz-png-cli) to build a docker container convert tool, so you dont need to install dependencies and reuse it.
+
+Once you have the tool image built you could run:
+```console
+cat input.dot | docker run -v your-host-path-or-Volume:/aws-icons --rm -i graphv
+iz-convert-png > output.png
+```
+
+### Using dot command
 
 ```console
 dot -Tpng input.dot > output.png
