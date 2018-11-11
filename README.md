@@ -43,7 +43,7 @@ Basically and to understand very clear the diagram:
 5. Show and share the diagrams and knowledge with your Architect mates.
 6. Get some reward, a coffee, a beer or why not a salary increase ;)
 
-## Convert dot to png
+## How to convert dot code to graph
 
 ### Using Docker convert container
 You could use [my another repo](https://github.com/manilabay/docker-graphviz-png-cli) to build a docker container convert tool, so you dont need to install dependencies and reuse it.
