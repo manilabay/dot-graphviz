@@ -7,6 +7,10 @@ digraph G {
     # s3  [image="../../aws-icons/AWS_Simple_Icons_svg_eps/Storage & Content Delivery/SVG/Storage & Content Delivery_Amazon S3.png"];
     # gl  [shape=none, image="../../aws-icons/AWS_Simple_Icons_svg_eps/Storage & Content Delivery/SVG/Storage & Content Delivery_Amazon Glacier.png"];
 
+    //add icons to nodes
+    aws_codepipeline[label="aws_codepipeline\nb" shape=none image="/aws-icons/Compute_AmazonECS.png"]
+
+    //Edges
     all_http_traffic_requests -> auth_api [color="green"];
 
     auth_api -> aws_lambda_functions [color="green"];
